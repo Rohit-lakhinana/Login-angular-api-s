@@ -1,0 +1,76 @@
+<div class="container main-box border border-primary rounded p-4">
+  <i class="fa fa-align-center" aria-hidden="true">
+    <h2 class="text-center mt-5">Welcome to the Home-Page</h2>
+  </i>
+
+
+    <div class="form-row align-items-center">
+      <div class="col-auto">
+        <div class="form-group">
+          <label for="marksInput">ID</label>
+          <input type="number" class="form-control" id="Id" [(ngModel)]="Id" name="Id"
+            placeholder="Enter ID">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="weightInput">Weight:</label>
+        <input type="number" class="form-control" id="weightInput" [(ngModel)]="weight" name="weight"
+          placeholder="Enter weight">
+      </div>
+     
+
+
+
+    <div class="col-auto">
+      <div class="form-group">
+        <label for="questionType">Question Type:</label>
+        <select class="form-control" id="questionType" [(ngModel)]="questionType" name="questionType">
+          <option value="" disabled selected>Select question type</option>
+          <option value="long">Long</option>
+          <option value="short">Short</option>
+          <option value="paragraph">Paragraph</option>
+          
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn btn-success mt-3" (click)="submitQuestion()">Submit</button>
+</div>
+
+
+<div class="container main-box border border-info rounded p-4 mt-4">
+  <h2>Question Bank</h2>
+
+  <!-- Display fetched questions -->
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let question of questions">
+      <div class="card mb-3">
+        <div class="card-header">
+          Question ID: {{ question.id }}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">uuid</h5>
+          <p class="card-text">{{ question.uuid }}</p>
+          <h5 class="card-title">Domain</h5>
+          <p class="card-text">{{ question.domain }}</p>
+          <h5 class="card-title">Marks</h5>
+          <p class="card-text">{{ question.totallmarks }}</p>
+          <p class="card-text">{{ question.questionClass.labels[0].text }}</p>
+          <h5 class="card-title">Weight</h5>
+          <p class="card-text">{{ question.weight }}</p>
+          <h5 class="card-title">Question Text</h5>
+          <p class="card-text">{{ question.questionText[0].text }}</p>
+          <h5 class="card-title">Question Image URL</h5>
+          <p class="card-text">{{ question.questionImageURL }}</p>
+          <ul>
+ 
+          </ul>
+
+          <button class="btn btn-primary" (click)="editQuestion(question)">Edit</button><br><br>
+          <button class="btn btn-danger" (click)="deleteQuestion(question)">Delete</button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
